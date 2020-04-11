@@ -1,0 +1,22 @@
+{
+	"name": "knex-nodejs",
+	"version": "1.0.0",
+	"main": "server.js",
+	"author": "albae69",
+	"license": "UNLICENSED",
+	"private": true,
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"knex": "*",
+		"mysql": "*"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.2"
+	},
+	"scripts": {
+		"start": "node server",
+		"dev": "nodemon server"
+	}
+}

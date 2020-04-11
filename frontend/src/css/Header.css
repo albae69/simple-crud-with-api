@@ -1,0 +1,27 @@
+header {
+	display: flex;
+	justify-content: space-between;
+	height: 50px;
+	width: 100%;
+	background: lightgrey;
+}
+a {
+	text-decoration: none;
+	color: black;
+	display: block;
+	width: auto;
+}
+
+header h1 {
+	margin-left: 50px;
+	font-size: 24px;
+}
+
+header ul {
+	margin-right: 50px;
+	font-size: 16px;
+}
+
+ul {
+	list-style: none;
+}
