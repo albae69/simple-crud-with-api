@@ -71,7 +71,7 @@ router.delete('/buku/:id', async (req, res) => {
 		let id = req.params.id;
 		await db('buku').where('id', id).del();
 		await res.send({
-			status: 'deleted',
+			status: 'book deleted',
 		});
 	} catch (e) {
 		console.log(e);

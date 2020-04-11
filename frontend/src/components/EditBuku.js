@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {Link, useHistory} from 'react-router-dom';
 import axios from 'axios';
-import {useHistory} from 'react-router-dom';
 
+import Form from './Form';
 import api from '../utils/api';
-import Form from '../components/Form';
-import '../css/TambahBuku.css';
 
-const TambahBuku = () => {
+const EditBuku = data => {
 	// for redirect
 	let history = useHistory();
+	let id = data.data.map(data => data.id);
 
 	// init state
 	const [state, setState] = useState({
@@ -16,6 +16,10 @@ const TambahBuku = () => {
 		sinopsis: '',
 		penulis: '',
 	});
+
+	useEffect(() => {
+		data.data.map(s => setState(s));
+	}, []);
 
 	// handle input
 	const handleChange = e => {
@@ -27,24 +31,28 @@ const TambahBuku = () => {
 	const handleSubmit = async e => {
 		try {
 			e.preventDefault();
-			let res = await axios.post(api, state);
+			let res = await axios.put(`${api}/${id}`, state);
 			await alert(res.data.status);
-			await history.push('/');
+			await history.push(`/buku/${id}`);
 		} catch (e) {
 			if (e) console.log(e);
 		}
 	};
+
 	return (
 		<React.Fragment>
 			<Form
-				title='Tambah Buku'
-				submitBtn='Tambah Buku'
 				state={state}
+				title='Edit Buku'
+				submitBtn='Kirim'
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
 			/>
+			<Link to={`/buku/${id}`}>
+				<strong style={{marginLeft: 50}}>Batal</strong>
+			</Link>
 		</React.Fragment>
 	);
 };
 
-export default TambahBuku;
+export default EditBuku;

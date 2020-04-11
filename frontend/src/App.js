@@ -13,6 +13,7 @@ const App = () => {
 				<Route exact path='/' component={Home} />
 				<Route path='/buku/:id' component={Buku} />
 				<Route path='/tambah-buku' component={TambahBuku} />
+				<Route path='*' component={() => <h3>404 not found</h3>} />
 			</Switch>
 		</Router>
 	);
